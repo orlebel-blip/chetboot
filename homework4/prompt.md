@@ -1,6 +1,16 @@
 # Curious Minds club chatbot
 
-Build a Google Colab notebook for Homework 4. Extend the class checkpointer and Gradio examples into a restart-persistent chatbot.
+Build a Google Colab notebook for Homework 4 using the class geography chatbot as the starting point.
+
+## Changes from the class prompts
+
+- Base chatbot (`promt1.docx`). Keep the Colab secret lookup, model, `add_messages` reducer, and one-node graph. Build the system message from the club in state.
+- Checkpointer (`prompt2.docx`). Keep the per-thread config and pass only the new message plus the selected topic on each invoke. Use Supabase-backed `PostgresSaver` to store history and the active club across restarts.
+- Gradio (`prompt3.docx`). Keep the title, short guidance, examples, and Colab launch. Use `gr.Blocks` for the club and saved conversation controls. Allocate a UUID per conversation and use Supabase to find threads after a reload or restart.
+
+## Graph and storage
+
+- Install `langgraph`, `langchain`, `langchain-openai`, `langgraph-checkpoint-postgres`, `psycopg[binary]`, and `gradio` in Colab.
 
 - Use the five clubs Astronomy, Cooking, Football, World Geography, and Python Programming.
 - Define a LangGraph state with `messages` using `add_messages` and a scalar `topic` that replaces its previous value.
@@ -20,6 +30,7 @@ The available clubs are Astronomy, Cooking, Football, World Geography, and Pytho
 
 ## Gradio controls
 
+- Title and short description. Explain the active club and show sample questions labeled by club.
 - Club dropdown. Default to Astronomy. A user change keeps the current thread and persists the topic immediately for a conversation with messages. For an empty draft, use the new topic on its first message.
 - Chat window. Display user and assistant messages from the latest saved state.
 - Message box and Send button. Both Enter and Send submit only the new message and active topic using the current thread ID. Ignore blank messages and clear the box after a successful turn.
@@ -29,4 +40,13 @@ The available clubs are Astronomy, Cooking, Football, World Geography, and Pytho
 
 ## Verification
 
-Try the printed test turns, a football-themed food request in Cooking and Football, and a follow-up about the old club after switching. Start a new thread and confirm its chat is empty. Restart the Colab runtime, rerun setup, then reopen the saved conversation and check its topic, history and next reply. Inspect the checkpoint tables in Supabase before writing the reflection.
+Run these four turns on `test-1` before launching Gradio.
+
+1. Cooking — “How do I make pancakes?” should get a recipe.
+2. Cooking — “Who won the 2022 World Cup?” should be declined with a suggestion to switch to Football.
+3. Football — “Who won the 2022 World Cup?” should get an answer.
+4. Football — “And how long do I fry each pancake?” should be declined as a return to the previous topic.
+
+Try a football-themed food request in Cooking and Football, and a follow-up about the old club after switching. Start a new thread and confirm its chat is empty. Restart the Colab runtime, rerun setup, then reopen the saved conversation and check its topic, history and next reply. Inspect the checkpoint tables in Supabase before writing the reflection.
+
+Submit the final prompt and notebook in a public GitHub repository. Include a Colab link the lecturer can open and a four- to six-sentence reflection based on the live checks. Keep credentials and the Gradio share link out of the submission.
