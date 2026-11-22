@@ -4,7 +4,7 @@ Build a Google Colab notebook for Homework 4. Extend the class checkpointer and 
 
 - Use the five clubs Astronomy, Cooking, Football, World Geography, and Python Programming.
 - Define a LangGraph state with `messages` using `add_messages` and a scalar `topic` that replaces its previous value.
-- Compile exactly `START -> chatbot -> END`. For every new user message, build a fresh system message from the current topic, call the model once with that system message followed by the stored history, and return only the reply as a state update. Use `openai:gpt-5-mini` and keep its name in one configuration variable.
+- Compile exactly `START -> chatbot -> END`. For every new user message, build a fresh system message from the current topic, call the model once with that system message followed by the stored history, and return only the reply as a state update. Use `openai:gpt-6-luna` and keep its name in one configuration variable.
 - Load `OPENAI_API_KEY` and `SUPABASE_DB_URL` from Colab Secrets. Use the Supabase Session pooler and a psycopg connection configured with autocommit, dict rows and disabled prepared statements. Call `PostgresSaver.setup()` and compile with that saver.
 - Render the graph with `draw_mermaid_png()`. Before starting Gradio, provide the four assignment test turns on `test-1` and verify that eight messages were appended and Football is saved.
 
