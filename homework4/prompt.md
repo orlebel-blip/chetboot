@@ -58,3 +58,7 @@ Redesign only the Gradio presentation for teenagers. Use a responsive workspace 
 Use a violet and teal palette, readable sans-serif typography, rounded panels and chat bubbles, generous spacing, and visible keyboard focus. Keep the five clubs in the labeled dropdown. Explain that switching clubs keeps the current conversation. Keep the saved conversation dropdown and short examples, give the empty chat an inviting prompt, and keep the primary Send button next to the message field.
 
 Apply styling through the Gradio theme and CSS at launch. Preserve the existing component roles, callback wiring, Enter and Send behavior, thread handling and queue. Keep the LangGraph graph, model, system message, Supabase persistence, and lecturer's verification cells as specified above.
+
+## Prompt revision - Gradio font launch fix
+
+Configure Inter as a Gradio GoogleFont object with system font fallbacks so Gradio can read the primary font name at launch. Preserve the Soft theme, CSS, share setting, controls, callbacks, graph, and Supabase persistence.
