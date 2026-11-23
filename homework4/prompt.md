@@ -50,3 +50,11 @@ Run these four turns on `test-1` before launching Gradio.
 Try a football-themed food request in Cooking and Football, and a follow-up about the old club after switching. Start a new thread and confirm its chat is empty. Restart the Colab runtime, rerun setup, then reopen the saved conversation and check its topic, history and next reply. Inspect the checkpoint tables in Supabase before writing the reflection.
 
 Submit the final prompt and notebook in a public GitHub repository. Include a Colab link the lecturer can open and a four- to six-sentence reflection based on the live checks. Keep credentials and the Gradio share link out of the submission.
+
+## Prompt revision — Gradio UI and UX
+
+Redesign only the Gradio presentation for teenagers. Use a responsive workspace with the conversation and composer in the main panel. Group club selection, examples, saved conversations, and the New conversation button in a sidebar that stacks above chat on narrow screens.
+
+Use a violet and teal palette, readable sans-serif typography, rounded panels and chat bubbles, generous spacing, and visible keyboard focus. Keep the five clubs in the labeled dropdown. Explain that switching clubs keeps the current conversation. Keep the saved conversation dropdown and short examples, give the empty chat an inviting prompt, and keep the primary Send button next to the message field.
+
+Apply styling through the Gradio theme and CSS at launch. Preserve the existing component roles, callback wiring, Enter and Send behavior, thread handling and queue. Keep the LangGraph graph, model, system message, Supabase persistence, and lecturer's verification cells as specified above.
